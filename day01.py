@@ -38,13 +38,32 @@ def star_one(data_in):
 def star_two(data_in):
     nums = list()
     for line in data_in:
-        pattern = r"(\d|one|two|three|four|five|six|seven|eight|nine)"
-        first_match = re.search(pattern, line)
-        first = first_match.group(0)
-        last_match = re.search(pattern, line[::-1])
-        last = last_match.group(0)
-        first = first if first.isdigit() else digits[first]
-        last = last if last.isdigit() else digits[last]
+        rewritten_line = list()
+        i = 0
+        while i < len(line):
+            if line[i] in first_letters:
+                found = False
+                for number in digits.keys():
+                    if line[i:i + len(number)] == number:
+                        found = True
+                        break
+                if found:
+                    rewritten_line.append(digits[number])
+                    i += 1
+                else:
+                    rewritten_line.append(line[i])
+                    i += 1
+            else:
+                rewritten_line.append(line[i])
+                i += 1
+        for char in rewritten_line:
+            if char.isdigit():
+                first = char
+                break
+        for char in rewritten_line[::-1]:
+            if char.isdigit():
+                last = char
+                break
         nums.append(int("".join([first, last])))
     return sum(nums)
 
@@ -55,7 +74,7 @@ def main():
     # data = []
     data = load_data("day01input.txt")
     # print(data)
-    print(star_one(data))
+    # print(star_one(data))
     print(star_two(data))
 
 
