@@ -38,7 +38,7 @@ def star_two(data_in):
 def main():
     # data = []
     data = load_data("day06input.txt")
-    print(data)
+    # print(data)
     print(star_one(data))
     print(star_two(data))
 
