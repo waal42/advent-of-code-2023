@@ -10,7 +10,6 @@ def load_data(file):
         mine = [int(x) for x in line.split(": ")[1].split(" | ")[1].split()]
         clean_data.append([card, winning, mine])
     return clean_data
-    
 
 
 @timer

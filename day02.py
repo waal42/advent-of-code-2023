@@ -25,6 +25,7 @@ def load_data(file):
         clean_data.append(game_data)
     return clean_data
 
+
 r_max, g_max, b_max = 12, 13, 14
 
 

@@ -68,7 +68,6 @@ def star_two(data_in):
     return sum(nums)
 
 
-
 @timer
 def main():
     # data = []
